@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saganty Roy Dennis - Developer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        /* Custom styles for the portfolio */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter for a modern look */
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f8f8; /* Light background */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #1a202c; /* gray-900 */
+            margin-bottom: 2.5rem; /* mb-10 */
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #0073b1; /* Blue accent */
+            border-radius: 9999px; /* rounded-full */
+        }
+        .skill-tag {
+            background-color: #e1f5fe; /* Light blue */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.5rem 1rem; /* p-2 px-4 */
+            margin: 0.375rem; /* m-1.5 */
+            display: inline-block;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            color: #0073b1; /* Blue text */
+            transition: transform 0.2s ease-in-out;
+        }
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Removed .project-image styling as it's no longer used */
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .link-button.primary {
+            background-color: #0073b1;
+            color: white;
+        }
+        .link-button.primary:hover {
+            background-color: #005f91;
+        }
+        .link-button.secondary {
+            background-color: #e2e8f0;
+            color: #2d3748;
+        }
+        .link-button.secondary:hover {
+            background-color: #cbd5e0;
+        }
+        .link-button i {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .project-card {
+                flex-direction: column; /* Revert to column for simplicity if no image */
+            }
+            /* Removed .project-image and .project-content width adjustments */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-blue-700">Saganty Roy Dennis</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-600 hover:text-blue-700 transition duration-300">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-blue-700 transition duration-300">Skills</a>
+                <a href="#experience" class="text-gray-600 hover:text-blue-700 transition duration-300">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-blue-700 transition duration-300">Projects</a>
+                <a href="#certifications" class="text-gray-600 hover:text-blue-700 transition duration-300">Certifications</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-700 transition duration-300">Contact</a>
+            </div>
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-blue-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2">
+            <a href="#about" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="#skills" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Skills</a>
+            <a href="#experience" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Experience</a>
+            <a href="#projects" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Projects</a>
+            <a href="#certifications" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Certifications</a>
+            <a href="#contact" class="block px-6 py-2 text-gray-600 hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-20 text-center rounded-b-3xl shadow-lg">
+        <div class="container">
+            <h1 class="text-5xl font-extrabold mb-4 animate-fade-in-down">Saganty Roy Dennis</h1>
+            <p class="text-2xl font-light mb-8 animate-fade-in-up">Software Development Engineer | GenAI & IoT Enthusiast</p>
+            <div class="flex justify-center">
+                <a href="mailto:sagantyroydennis15@gmail.com" class="link-button primary text-lg">
+                    <i class="fas fa-envelope"></i> Contact Me
+                </a>
+            </div>
+            <!-- Removed social media links from hero section -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="card text-center">
+                <p class="text-lg mb-4">
+                    Highly motivated Information Technology graduate seeking a   Software Engineer   role to apply strong foundational skills in   Java, Python, SQL, HTML, and CSS  .
+                </p>
+                <p class="text-lg">
+                    Eager to leverage practical experience with   Identity and Access Management (IAM) using Keycloak   and a proactive approach to problem-solving. Committed to contributing to innovative software solutions and collaborating effectively within a dynamic development team. I am passionate about exploring new technologies, particularly in the fields of Generative AI and IoT, and applying them to solve real-world problems.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="card">
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Programming Languages</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Java (Proficient)</span>
+                        <span class="skill-tag">Python (Proficient)</span>
+                        <span class="skill-tag">SQL (Proficient)</span>
+                        <span class="skill-tag">C++ (Basic)</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">AI/ML & NLP</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Generative AI (GenAI)</span>
+                        <span class="skill-tag">Large Language Models (LLMs)</span>
+                        <span class="skill-tag">Retrieval Augmented Generation (RAG)</span>
+                        <span class="skill-tag">Natural Language Processing (NLP)</span>
+                        <span class="skill-tag">Chatbot Development</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">IoT & Embedded Systems</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">ESP32</span>
+                        <span class="skill-tag">Thingspeak</span>
+                        <span class="skill-tag">CT/VT Sensors</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Cloud Platforms</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Google Cloud Platform (GCP - Basic)</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Frameworks/Libraries</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Spring Boot (Basic)</span>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Identity & Access Management</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Keycloak</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-blue-700">Soft Skills</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Problem-solving</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Time Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="card">
+                <div class="mb-6">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">GenAI Intern</h3>
+                        <span class="text-gray-600 text-sm">April 2025 – November 2025</span>
+                    </div>
+                    <p class="italic text-blue-700 mb-3">GlobalLogic (A Hitachi Group Company), Bengaluru, India</p>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <li>Developed and explored concepts related to   Generative AI (GenAI)  , including   Large Language Models (LLMs)  ,   Retrieval Augmented Generation (RAG)  , and   Natural Language Processing (NLP)   techniques.</li>
+                        <li>Gained practical experience in   chatbot development  , contributing to interactive AI solutions.</li>
+                        <li>Worked on various capstone projects assigned throughout the internship, applying theoretical knowledge to real-world scenarios in the GenAI domain.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-gray-50">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            
+            <!-- Project 1: Household Appliance Power Consumption and Management using IoT -->
+            <div class="project-card">
+                <!-- Removed project image placeholder -->
+                <div class="project-content flex-grow">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-2">Household Appliance Power Consumption and Management using IoT</h3>
+                    <p class="italic text-gray-600 mb-3">Technologies: C++, Arduino, ESP32, CT/VT Sensors, Thingspeak</p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4 space-y-1">
+                        <li>Designed and implemented an   IoT-based system   for real-time monitoring of household appliance power consumption.</li>
+                        <li>Utilized   C++ on Arduino and ESP32   microcontrollers to interface with   CT and VT sensors   for accurate current and voltage measurements.</li>
+                        <li>Integrated the system with   Thingspeak   for data visualization, enabling users to remotely track and manage power usage.</li>
+                    </ul>
+                    <!-- Removed Live Demo and GitHub Repo buttons -->
+                </div>
+            </div>
+
+            <!-- Project 2: Text Summarization Tool -->
+            <div class="project-card">
+                <!-- Removed project image placeholder -->
+                <div class="project-content flex-grow">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-2">Text Summarization Tool</h3>
+                    <p class="italic text-gray-600 mb-3">Technologies: Python, Natural Language Processing (NLP) Libraries</p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4 space-y-1">
+                        <li>Developed a   text summarization application   to condense lengthy documents into concise summaries.</li>
+                        <li>Implemented   NLP techniques   to extract key information and generate coherent summaries.</li>
+                        <li>Aimed to improve efficiency in information retrieval and content digestion for users.</li>
+                    </ul>
+                    <!-- Removed Live Demo and GitHub Repo buttons -->
+                </div>
+            </div>
+
+            <!-- Project 3: Flappy Bird Game Development -->
+            <div class="project-card">
+                <!-- Removed project image placeholder -->
+                <div class="project-content flex-grow">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-2">Flappy Bird Game Development</h3>
+                    <p class="italic text-gray-600 mb-3">Technologies: Java, Spring Boot</p>
+                    <ul class="list-disc pl-5 text-gray-700 mb-4 space-y-1">
+                        <li>Created a desktop version of the classic   Flappy Bird game using Java  .</li>
+                        <li>Explored basic game development principles and object-oriented design in Java.</li>
+                        <li>Utilized concepts related to   Spring Boot   for foundational application structuring.</li>
+                    </ul>
+                    <!-- Removed Live Demo and GitHub Repo buttons -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certifications & Achievements Section -->
+    <section id="certifications" class="py-16">
+        <div class="container">
+            <h2 class="section-title">Certifications & Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Certification 1: Java -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">Basic Java Certification</h3>
+                    <p class="italic text-gray-600 mb-1">HackerRank - 2023</p>
+                    <p class="text-gray-700 text-sm">Validated foundational knowledge and problem-solving skills in Java programming.</p>
+                </div>
+                <!-- Certification 2: SQL -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">SQL Certification</h3>
+                    <p class="italic text-gray-600 mb-1">BitLabs - 2023</p>
+                    <p class="text-gray-700 text-sm">Demonstrated proficiency in database querying and management using SQL.</p>
+                </div>
+                <!-- Certification 3: HTML & CSS -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">HTML & CSS Certification</h3>
+                    <p class="italic text-gray-600 mb-1">BitLabs - 2022</p>
+                    <p class="text-gray-700 text-sm">Certified in fundamental web development technologies, including structuring content with HTML and styling with CSS.</p>
+                </div>
+                <!-- Certification 4: Web Development -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">Web Development Certification</h3>
+                    <p class="italic text-gray-600 mb-1">EBOX - 2024</p>
+                    <p class="text-gray-700 text-sm">Completed comprehensive training in web development concepts and practices.</p>
+                </div>
+                <!-- Achievement 1: Google Cloud -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">Google Cloud Computing Foundation Badges (8 Badges)</h3>
+                    <p class="italic text-gray-600 mb-1">Google Cloud Skills Boost - 2024</p>
+                    <p class="text-gray-700 text-sm">Achieved 8 badges demonstrating foundational understanding of Google Cloud Platform services and cloud computing concepts.</p>
+                </div>
+                <!-- Achievement 2: AMCAT -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">AMCAT - A Grade</h3>
+                    <p class="italic text-gray-600 mb-1">Aspiring Minds Computer Adaptive Test - 2024</p>
+                    <p class="text-sm">Achieved an 'A' grade, demonstrating strong aptitude in logical reasoning, quantitative ability, and English comprehension relevant to IT roles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 bg-gray-50">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">Bachelor of Technology in Information Technology</h3>
+                        <span class="text-gray-600 text-sm">Expected: May 2025</span>
+                    </div>
+                    <p class="italic text-blue-700 mb-1">CVR College of Engineering, Hyderabad, Telangana, India</p>
+                    <p class="text-gray-700 mb-1">Percentage: 8.67</p>
+                    <p class="text-gray-700"><strong>Relevant Coursework:</strong> Data Structures, Algorithms, Operating Systems, Database Management Systems, Object-Oriented Programming, Web Technologies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Activities Section -->
+    <section id="leadership" class="py-16">
+        <div class="container">
+            <h2 class="section-title">Leadership & Activities</h2>
+            <div class="card">
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">Cultural Head</h3>
+                    <p class="italic text-gray-600 mb-3">Bethany Academy</p>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                        <li>Elected as Cultural Head, responsible for organizing and overseeing cultural events and activities at the school level.</li>
+                        <li>Demonstrated leadership, planning, and coordination skills in successfully executing various school functions.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops & Participations Section -->
+    <section id="workshops" class="py-16 bg-gray-50">
+        <div class="container">
+            <h2 class="section-title">Workshops & Participations</h2>
+            <div class="card">
+                <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                    <li>Attended a   workshop on IoT   conducted by CVR College of Engineering, gaining practical insights into Internet of Things technologies and applications.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="card text-center">
+                <p class="text-lg mb-6">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                <a href="mailto:sagantyroydennis15@gmail.com" class="link-button primary text-xl px-8 py-3">
+                    <i class="fas fa-envelope mr-3"></i> sagantyroydennis15@gmail.com
+                </a>
+                <!-- Removed social media links from contact section -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 text-center rounded-t-3xl">
+        <div class="container">
+            <p>&copy; 2025 Saganty Roy Dennis. All rights reserved.</p>
+            <p class="text-sm mt-2">Built with <i class="fas fa-heart text-red-500"></i> using HTML & Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking a link
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Toggle mobile menu visibility
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
